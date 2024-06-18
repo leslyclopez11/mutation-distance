@@ -50,6 +50,24 @@ public class DistanceTest {
         Distance.distance(91, 0, -91, 0);
     }
 
+    @Test
+    public void killAOIUMutants() {
+        double result_1 = Distance.distance(-34.05, -118.25, 40.7128, -74.0060);
+        double result_2 = Distance.distance(34.05, -118.25, -40.7128, -74.0060);
+
+        assertEquals(result_1, result_2, 0.001);
+    }
+
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testExactValueforCOR() {
+        Distance.distance(-91,0,-91,0);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testExactValueforCORPT2() {
+        Distance.distance(0,-180.01,0,180);
+    }
 
 
 
